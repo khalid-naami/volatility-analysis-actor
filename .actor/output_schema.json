@@ -1,0 +1,12 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Options Volatility Analysis Output",
+    "properties": {
+        "dataset": {
+            "type": "string",
+            "title": "Dataset link",
+            "description": "Direct link to the dataset containing options volatility intelligence, smiles, term structures, and expected moves.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        }
+    }
+}
