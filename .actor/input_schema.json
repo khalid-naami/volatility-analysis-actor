@@ -1,0 +1,48 @@
+{
+    "title": "Options Volatility Analysis Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "symbols": {
+            "title": "Target Tickers / Equities",
+            "type": "array",
+            "description": "List of tickers or optionable equities/indices to calculate full volatility diagnostics for (e.g. SPY, QQQ, AAPL, NVDA, TSLA, MSFT, AMZN).",
+            "editor": "json",
+            "prefill": ["SPY", "QQQ", "AAPL", "NVDA", "TSLA"],
+            "default": ["SPY", "QQQ", "AAPL", "NVDA", "TSLA"]
+        },
+        "includeSmileCurve": {
+            "title": "Include Volatility Smile & Skew Curve",
+            "type": "boolean",
+            "description": "Calculate strike-by-strike Call and Put Implied Volatility curves across the nearest expiration.",
+            "default": true
+        },
+        "includeTermStructure": {
+            "title": "Include Implied Volatility Term Structure",
+            "type": "boolean",
+            "description": "Calculate ATM IV term structure across all future expiration cycles and classify Contango vs Backwardation.",
+            "default": true
+        },
+        "includeHistoricalVol": {
+            "title": "Include 1-Year Historical IV vs RV Series",
+            "type": "boolean",
+            "description": "Include daily 1-year history of 30-day Realized Volatility, VIX benchmark, and underlying price.",
+            "default": true
+        },
+        "includeExpectedMoveCone": {
+            "title": "Include Expected Move Projections",
+            "type": "boolean",
+            "description": "Calculate market-implied upper and lower expected move bounds from ATM straddles across nearest 4 expiration cycles.",
+            "default": true
+        },
+        "maxExpirationsToScan": {
+            "title": "Max Expirations to Scan",
+            "type": "integer",
+            "description": "Maximum number of forward expiration cycles to process in the term structure matrix.",
+            "default": 15,
+            "minimum": 3,
+            "maximum": 30
+        }
+    },
+    "required": ["symbols"]
+}
