@@ -1,0 +1,16 @@
+{
+    "actorSpecification": 1,
+    "name": "volatility-analysis-intelligence",
+    "title": "Options Volatility Analysis, Smile & Term Structure",
+    "description": "Quantitative options volatility suite: ATM Implied Volatility, 30D Realized Volatility, 52W IV Rank/Percentile, Variance Risk Premium (VRP), Volatility Smile, Term Structure (Contango/Backwardation), Skew & Kurtosis, and Expected Move Projections.",
+    "version": "1.0",
+    "meta": {
+        "template": "python-empty"
+    },
+    "dockerfile": "../Dockerfile",
+    "input": "./input_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "output": "./output_schema.json"
+}
