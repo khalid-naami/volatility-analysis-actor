@@ -1,0 +1,147 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "type": "object",
+        "properties": {
+            "symbol": {
+                "type": "string",
+                "title": "Symbol / Ticker"
+            },
+            "underlyingPrice": {
+                "type": "number",
+                "title": "Spot Price"
+            },
+            "selectedExpiry": {
+                "type": "string",
+                "title": "Active Expiry"
+            },
+            "currentAtmIvPct": {
+                "type": "number",
+                "title": "ATM IV (%)"
+            },
+            "currentRv30dPct": {
+                "type": "number",
+                "title": "30D RV (%)"
+            },
+            "vixProxyTicker": {
+                "type": "string",
+                "title": "VIX Proxy"
+            },
+            "vixProxyValue": {
+                "type": "number",
+                "title": "VIX Proxy Value"
+            },
+            "ivRank52wPct": {
+                "type": "number",
+                "title": "IV Rank (52W %)"
+            },
+            "ivPercentile52wPct": {
+                "type": "number",
+                "title": "IV Percentile (52W %)"
+            },
+            "vrpSpread": {
+                "type": "number",
+                "title": "Variance Risk Premium (IV - RV)"
+            },
+            "termStructureRegime": {
+                "type": "string",
+                "title": "Term Structure Regime"
+            },
+            "skewnessRatio": {
+                "type": "number",
+                "title": "Option Skewness Ratio"
+            },
+            "kurtosisFatTail": {
+                "type": "number",
+                "title": "Option Kurtosis"
+            },
+            "expectedMoveNearest1Pct": {
+                "type": "number",
+                "title": "Expected Move D1 (%)"
+            },
+            "volatilityGrade": {
+                "type": "string",
+                "title": "Volatility Environment Grade"
+            },
+            "calculatedAt": {
+                "type": "string",
+                "title": "Calculated At"
+            }
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Volatility Overview",
+            "description": "Executive dashboard of options Implied Volatility, Realized Volatility, IV Rank, Variance Risk Premium, and Skew.",
+            "transformation": {
+                "fields": [
+                    "symbol",
+                    "underlyingPrice",
+                    "currentAtmIvPct",
+                    "currentRv30dPct",
+                    "vrpSpread",
+                    "ivRank52wPct",
+                    "ivPercentile52wPct",
+                    "vixProxyValue",
+                    "termStructureRegime",
+                    "skewnessRatio",
+                    "expectedMoveNearest1Pct",
+                    "volatilityGrade"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "columns": {
+                    "symbol": {
+                        "label": "Ticker",
+                        "format": "text"
+                    },
+                    "underlyingPrice": {
+                        "label": "Spot Price",
+                        "format": "number"
+                    },
+                    "currentAtmIvPct": {
+                        "label": "ATM IV %",
+                        "format": "percentage"
+                    },
+                    "currentRv30dPct": {
+                        "label": "30D RV %",
+                        "format": "percentage"
+                    },
+                    "vrpSpread": {
+                        "label": "VRP (IV-RV)",
+                        "format": "number"
+                    },
+                    "ivRank52wPct": {
+                        "label": "IV Rank %",
+                        "format": "percentage"
+                    },
+                    "ivPercentile52wPct": {
+                        "label": "IV %ile",
+                        "format": "percentage"
+                    },
+                    "vixProxyValue": {
+                        "label": "VIX Proxy",
+                        "format": "number"
+                    },
+                    "termStructureRegime": {
+                        "label": "Term Structure",
+                        "format": "text"
+                    },
+                    "skewnessRatio": {
+                        "label": "Skew Ratio",
+                        "format": "number"
+                    },
+                    "expectedMoveNearest1Pct": {
+                        "label": "Exp Move %",
+                        "format": "percentage"
+                    },
+                    "volatilityGrade": {
+                        "label": "Vol Environment",
+                        "format": "text"
+                    }
+                }
+            }
+        }
+    }
+}
