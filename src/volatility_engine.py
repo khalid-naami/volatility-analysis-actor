@@ -36,7 +36,7 @@ def calculate_volatility_dossier(
     Main quantitative volatility analysis orchestrator.
     """
     S = float(spot_price)
-    now_date = datetime.date.today()
+    now_date = datetime.datetime.now(datetime.timezone.utc).date()
     
     # 1. 30-Day Realized Volatility
     current_rv = 20.0
@@ -63,7 +63,7 @@ def calculate_volatility_dossier(
             iv_percentile = round(float((v_close < vix_current).mean() * 100.0), 1)
             
     # 3. Resolve active expiration & ATM IV
-    selected_expiry = expirations[0] if expirations else datetime.date.today().strftime('%Y-%m-%d')
+    selected_expiry = expirations[0] if expirations else now_date.strftime('%Y-%m-%d')
     current_iv_pct = vix_current
     smile_data = []
     
@@ -173,8 +173,10 @@ def calculate_volatility_dossier(
         elif abs(front_iv - back_iv) <= 1.5:
             term_regime = "Flat Volatility Curve ➖ (Uniform Risk Distribution)"
 
-    first_skew = term_structure[0].get("skewnessRatio") if term_structure else 0.12
-    first_kurt = term_structure[0].get("kurtosisFatTail") if term_structure else 0.08
+    raw_skew = term_structure[0].get("skewnessRatio") if term_structure else None
+    raw_kurt = term_structure[0].get("kurtosisFatTail") if term_structure else None
+    first_skew = raw_skew if raw_skew is not None else 0.12
+    first_kurt = raw_kurt if raw_kurt is not None else 0.08
 
     # 5. Expected Move Projections across nearest 4 cycles
     expected_moves = []
