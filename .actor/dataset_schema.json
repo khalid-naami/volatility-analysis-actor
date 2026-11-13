@@ -49,10 +49,12 @@
             },
             "skewnessRatio": {
                 "type": "number",
+                "nullable": true,
                 "title": "Option Skewness Ratio"
             },
             "kurtosisFatTail": {
                 "type": "number",
+                "nullable": true,
                 "title": "Option Kurtosis"
             },
             "expectedMoveNearest1Pct": {
@@ -63,11 +65,54 @@
                 "type": "string",
                 "title": "Volatility Environment Grade"
             },
+            "volatilitySmileCurve": {
+                "type": "array",
+                "title": "Volatility Smile Curve",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            },
+            "termStructureMatrix": {
+                "type": "array",
+                "title": "Term Structure Matrix",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            },
+            "expectedMoveProjections": {
+                "type": "array",
+                "title": "Expected Move Projections",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            },
+            "historicalVolTimeSeries": {
+                "type": "array",
+                "title": "Historical Volatility Time Series",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            },
+            "ivRankTimeSeries": {
+                "type": "array",
+                "title": "IV Rank Time Series",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
+            },
             "calculatedAt": {
                 "type": "string",
                 "title": "Calculated At"
             }
-        }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": true,
+        "required": []
     },
     "views": {
         "overview": {
