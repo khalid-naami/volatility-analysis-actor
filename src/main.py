@@ -71,6 +71,9 @@ async def main():
             ]
         }
         await Actor.set_value("OUTPUT", summary_payload)
+        if not results:
+            await Actor.fail(status_message="Volatility Analysis Actor produced 0 asset dossiers.")
+            return
         
         Actor.log.info(f"✅ Volatility Analysis Actor completed! {len(results)} asset dossiers pushed to Apify Dataset.")
 
